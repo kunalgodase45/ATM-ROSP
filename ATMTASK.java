@@ -101,6 +101,61 @@ class ATM {
         }
         menu(); 
     }
+
+    public void PinChange() {
+        System.out.println("Enter Current PIN: ");
+        int currentPin = sc.nextInt();
+        if (currentPin == PIN) {  
+            System.out.println("Enter New PIN: ");
+            int newPin = sc.nextInt();
+            System.out.println("Re-enter New PIN: ");
+            int reenteredPin = sc.nextInt();
+
+            if (newPin == reenteredPin) {  
+                PIN = newPin;  
+                System.out.println("PIN Changed Successfully!\n");
+                checkpin();  
+            } else {
+                System.out.println("PINs do not match! Try Again.\n");
+                PinChange();  
+            }
+        } else {
+            System.out.println("Incorrect PIN! Try Again.\n");  
+            menu(); 
+        }
+    }
+
+    public void transferFunds() {
+        System.out.println("Enter the account number to transfer to:");
+        String accountNumber = sc.next();
+
+        if (!accounts.containsKey(accountNumber)) {
+            System.out.println("Invalid account number! Please try again.");
+            menu();
+            return;
+        }
+
+        System.out.println("Enter amount to transfer:");
+        float transferAmount = sc.nextFloat();
+
+        if (transferAmount > Balance) {
+            System.out.println("Insufficient Balance! Transfer failed.\n");
+        } else {
+            
+            Balance -= transferAmount;
+
+            float recipientBalance = accounts.get(accountNumber);
+            accounts.put(accountNumber, recipientBalance + transferAmount);
+
+            miniStatement.add("Transferred: " + transferAmount + " to Account: " + accountNumber);
+            System.out.println("Funds Transferred Successfully!\n");
+        }
+        menu();  
+    }
+
+    public void exitATM() {
+        System.out.println("Thank you for using the ATM!");
+    }
 }
 
 public class ATMTASK {
