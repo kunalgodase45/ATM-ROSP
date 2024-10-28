@@ -31,6 +31,34 @@ class ATM {
             }
         }
     }
+
+    public void menu() {
+        System.out.println("Enter Your Choice: \n");
+        System.out.println("1. Check Balance");
+        System.out.println("2. Deposit Money");
+        System.out.println("3. Withdraw Money");
+        System.out.println("4. Mini Statement");
+        System.out.println("5. PIN Change");
+        System.out.println("6. Transfer Funds");
+        System.out.println("7. Exit");
+
+        int option = sc.nextInt();
+
+        
+        switch (option) {
+            case 1 -> CheckBalance();  
+            case 2 -> DepositMoney();  
+            case 3 -> WithdrawMoney();  
+            case 4 -> MiniStatement(); 
+            case 5 -> PinChange();  
+            case 6 -> transferFunds(); 
+            case 7 -> exitATM(); 
+            default -> {
+                System.out.println("Choose a Valid Option: "); 
+                menu(); 
+            }
+        }
+    }
 }
 
 public class ATMTASK {
