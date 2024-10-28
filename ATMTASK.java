@@ -59,6 +59,21 @@ class ATM {
             }
         }
     }
+
+    public void CheckBalance() {
+        System.out.println("Your account Balance is: " + Balance);
+        menu(); 
+    }
+
+   
+    public void DepositMoney() {
+        System.out.println("Enter Deposit Amount: ");
+        float amount = sc.nextFloat();
+        Balance += amount; 
+        miniStatement.add("Deposited: " + amount);  
+        System.out.println("Money Deposited successfully\n");
+        menu(); 
+    }
 }
 
 public class ATMTASK {
