@@ -74,6 +74,33 @@ class ATM {
         System.out.println("Money Deposited successfully\n");
         menu(); 
     }
+
+    public void WithdrawMoney() {
+        System.out.println("Enter Withdrawal Amount:");
+        float amount = sc.nextFloat();
+        if (amount > Balance) {  
+            System.out.println("Insufficient Balance! Please Check Balance and Retry.\n");
+        } else {
+            Balance -= amount;  
+            miniStatement.add("Withdrawn: " + amount); 
+            System.out.println("Withdrawal Successful!\n");
+        }
+        menu();
+    }
+
+  
+    public void MiniStatement() {
+        System.out.println("Mini Statement:");
+        if (miniStatement.isEmpty()) {
+            System.out.println("No transactions yet.\n");  
+        } else {
+            for (String transaction : miniStatement) {
+                System.out.println(transaction);
+            }
+            System.out.println("\nCurrent Balance: " + Balance + "\n");  
+        }
+        menu(); 
+    }
 }
 
 public class ATMTASK {
